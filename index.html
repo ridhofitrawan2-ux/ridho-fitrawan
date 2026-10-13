@@ -6,14 +6,14 @@
     <title>Ridho Fitrawan — Cloud & Network Engineer Portfolio</title>
     <link rel="shortcut icon" type="image/x-icon" href="terminal.png">
 
-    <meta name="description" content="Portfolio of Ridho Fitrawan, Network & System Administrator, Cloud Engineer Enthusiast. 1st Winner LKS ITNSA Lampung 2025 & National MoE.">
-    
+    <meta name="description" content="Portfolio of Ridho Fitrawan, Network & System Administrator. 1st Winner LKS ITNSA Lampung 2025, National MoE 2025, Top 5 OJM Mikrotik Sumatera 2026 & Finalis OJM Nasional 2026 (Yogyakarta).">
+
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         /* =========================================
            1. ROOT VARIABLES & GLOBAL SETUP
@@ -24,32 +24,32 @@
             --bg-card: #0d1525;
             --bg-card-hover: #111b30;
             --bg-terminal: #0a0f1c;
-            
+
             --primary: #00f2ff;
             --secondary: #0077be;
             --accent: #00ff9d;
             --warning: #fbbf24;
             --danger: #ef4444;
             --purple: #a855f7;
-            
+
             --text: #e0e6ed;
             --text-muted: #94a3b8;
             --text-dim: #64748b;
-            
+
             --border: #1e293b;
             --border-light: #334155;
-            
+
             --font-poppins: 'Poppins', sans-serif;
             --font-inter: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            
+
             --shadow-glow: 0 0 20px rgba(0, 242, 255, 0.15);
             --shadow-card: 0 10px 30px rgba(0,0,0,0.5);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
         body {
             background-color: var(--bg-color);
             color: var(--text);
@@ -108,7 +108,7 @@
         nav.scrolled { padding: 0.8rem 4rem; }
         nav .logo { font-family: var(--font-mono); color: var(--primary); font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
         nav .logo i { font-size: 1.2rem; }
-        nav ul { list-style: none; display: flex; gap: 2.5rem; align-items: center; }
+        nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
         nav ul li a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 500; transition: color 0.3s; text-transform: uppercase; font-family: var(--font-mono); position: relative; }
         nav ul li a:hover { color: var(--text); }
         nav ul li a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
@@ -134,13 +134,57 @@
            ========================================= */
         #home { justify-content: center; padding-top: 6rem; }
         .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: center; }
-        .hero-greeting { font-family: var(--font-mono); color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem; opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+
+        /* === HERO PROFILE PHOTO (ridho.png) === */
+        .hero-avatar {
+            position: relative;
+            width: 150px; height: 150px;
+            margin-bottom: 2rem;
+            opacity: 0; animation: fadeInUp 0.8s ease forwards;
+        }
+        .hero-avatar img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center 20%;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.35);
+            display: block; position: relative; z-index: 1;
+            background: var(--bg-card);
+        }
+        .hero-avatar::before {
+            content: ''; position: absolute; inset: -9px;
+            border-radius: 50%;
+            border: 2px dashed rgba(0, 242, 255, 0.45);
+            animation: spin 18s linear infinite;
+        }
+        .hero-avatar::after {
+            content: 'ONLINE'; position: absolute; bottom: -7px; left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 2px;
+            color: var(--accent); background: var(--bg-color);
+            border: 1px solid rgba(0, 255, 157, 0.4);
+            padding: 0.15rem 0.55rem; border-radius: 20px; z-index: 2;
+        }
+        .avatar-fallback {
+            position: absolute; inset: 0; border-radius: 50%;
+            display: none; align-items: center; justify-content: center;
+            font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700;
+            color: var(--primary); background: var(--bg-card);
+            border: 3px solid var(--primary);
+        }
+        .hero-avatar.no-img img { display: none; }
+        .hero-avatar.no-img .avatar-fallback { display: flex; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .hero-greeting { font-family: var(--font-mono); color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem; opacity: 0; animation: fadeInUp 0.8s ease 0.1s forwards; }
         .hero-title { font-family: var(--font-poppins); font-size: 5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; opacity: 0; animation: fadeInUp 0.8s ease 0.2s forwards; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-subtitle { font-size: 1.8rem; color: var(--text); margin-bottom: 1.5rem; opacity: 0; animation: fadeInUp 0.8s ease 0.4s forwards; font-weight: 500; }
         .typing-text { font-family: var(--font-mono); color: var(--accent); border-right: 3px solid var(--accent); white-space: nowrap; overflow: hidden; width: 0; animation: typing 3s steps(40, end) 1s forwards, blink 0.8s step-end infinite; }
         .hero-badges { display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap; opacity: 0; animation: fadeInUp 0.8s ease 0.6s forwards; }
         .badge { background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.3); color: var(--primary); padding: 0.7rem 1.2rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition); }
         .badge:hover { background: rgba(0, 242, 255, 0.1); border-color: var(--primary); }
+        .badge.gold { background: rgba(251, 191, 36, 0.05); border-color: rgba(251, 191, 36, 0.4); color: var(--warning); }
+        .badge.gold:hover { background: rgba(251, 191, 36, 0.1); border-color: var(--warning); }
         .hero-buttons { display: flex; gap: 1rem; opacity: 0; animation: fadeInUp 0.8s ease 0.8s forwards; }
         .btn { padding: 1rem 2rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.8rem; transition: var(--transition); font-family: var(--font-inter); font-size: 1rem; }
         .btn-primary { background: var(--primary); color: var(--bg-color); }
@@ -173,8 +217,13 @@
         .terminal-btn { background: var(--primary); color: var(--bg-color); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.3rem; border: none; box-shadow: 0 0 15px rgba(0, 242, 255, 0.5); transition: transform 0.3s; }
         .terminal-btn:hover { transform: scale(1.1) rotate(10deg); }
         .terminal-window { display: none; position: fixed; bottom: 90px; right: 25px; width: 600px; max-width: 90vw; height: 450px; background: rgba(10, 15, 28, 0.95); backdrop-filter: blur(10px); border: 1px solid var(--primary); border-radius: 12px; flex-direction: column; box-shadow: 0 0 40px rgba(0, 242, 255, 0.2); z-index: 1000; }
+        .terminal-window.open { display: flex; }
         .terminal-header { background: var(--bg-color); padding: 10px 15px; border-top-left-radius: 12px; border-top-right-radius: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); }
+        .terminal-header i { cursor: pointer; }
         .terminal-body { flex: 1; padding: 15px; overflow-y: auto; font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent); }
+        .terminal-output div { margin-bottom: 0.4rem; white-space: pre-wrap; }
+        .terminal-output .out-cmd { color: var(--primary); }
+        .terminal-output .out-err { color: var(--danger); }
         .terminal-input-line { display: flex; align-items: center; padding: 15px; border-top: 1px solid var(--border); color: var(--primary); }
         #terminal-input { background: transparent; border: none; outline: none; color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; width: 100%; margin-left: 10px; }
 
@@ -198,7 +247,7 @@
         .philosophy-card p { color: var(--text-muted); font-size: 0.95rem; }
 
         /* =========================================
-           9. ROAD TO LKS SECTION
+           9. ROAD TO LKS & OJM SECTION
            ========================================= */
         .lks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .lks-card { background: var(--bg-card); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; position: relative; overflow: hidden; }
@@ -210,6 +259,15 @@
         .module-info h5 { color: var(--text); font-size: 1rem; }
         .module-info p { color: var(--text-muted); font-size: 0.85rem; }
 
+        /* OJM 2026 mini cards */
+        .ojm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+        .ojm-card { background: var(--bg-card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; transition: var(--transition); position: relative; overflow: hidden; }
+        .ojm-card:hover { border-color: var(--warning); transform: translateY(-5px); }
+        .ojm-card::before { content: 'OJM 2026'; position: absolute; top: 15px; right: 15px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--border-light); letter-spacing: 1px; }
+        .ojm-card .ojm-label { font-family: var(--font-mono); color: var(--warning); font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .ojm-card h4 { color: var(--text); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .ojm-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
         /* =========================================
            10. ACHIEVEMENT & CERTIFICATES
            ========================================= */
@@ -218,22 +276,30 @@
         .card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--primary); opacity: 0; transition: opacity 0.3s; }
         .card:hover { transform: translateY(-8px); background: var(--bg-card-hover); border-color: rgba(0, 242, 255, 0.3); box-shadow: var(--shadow-card); }
         .card:hover::before { opacity: 1; }
+        .card.gold { border-color: rgba(251, 191, 36, 0.35); }
+        .card.gold::before { background: var(--warning); }
+        .card.gold:hover { border-color: rgba(251, 191, 36, 0.6); }
         .card-icon { font-size: 3rem; color: var(--primary); margin-bottom: 1.5rem; }
+        .card.gold .card-icon { color: var(--warning); }
         .card h3 { font-family: var(--font-poppins); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text); }
         .card .subtitle { color: var(--primary); font-family: var(--font-mono); font-size: 0.95rem; margin-bottom: 1.5rem; display: block; }
+        .card.gold .subtitle { color: var(--warning); }
         .card p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.7; }
         .detail-list { list-style: none; margin-bottom: 1.5rem; }
         .detail-list li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
         .detail-list li::before { content: '▹'; position: absolute; left: 0; color: var(--primary); }
+        .card.gold .detail-list li::before { color: var(--warning); }
         .tag-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
         .tag { background: rgba(0, 119, 190, 0.15); color: var(--primary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-family: var(--font-mono); border: 1px solid rgba(0, 119, 190, 0.3); }
+        .tag.gold { background: rgba(251, 191, 36, 0.1); color: var(--warning); border-color: rgba(251, 191, 36, 0.3); }
 
         /* Certificate Images */
         .cert-image-container { width: 100%; height: 250px; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid var(--border); position: relative; }
-        .cert-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: brightness(0.8); }
+        .cert-image { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; filter: brightness(0.8); }
         .card:hover .cert-image { transform: scale(1.05); filter: brightness(1); }
         .cert-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(5,10,20,0.9)); padding: 1rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; opacity: 0; transition: opacity 0.3s; }
         .card:hover .cert-overlay { opacity: 1; }
+        .cert-verified { position: absolute; top: 10px; right: 10px; background: rgba(0, 255, 157, 0.9); color: var(--bg-color); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 20px; z-index: 2; }
 
         /* =========================================
            11. SKILLS DASHBOARD
@@ -271,7 +337,7 @@
            13. LAB INFRASTRUCTURE
            ========================================= */
         .lab-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
-        .topology-box { background: var(--bg-terminal); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; font-family: var(--font-mono); color: var(--primary); line-height: 2.2; font-size: 1rem; position: relative; overflow: hidden; box-shadow: var(--shadow-card); }
+        .topology-box { background: var(--bg-terminal); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; font-family: var(--font-mono); color: var(--primary); line-height: 2.2; font-size: 1rem; position: relative; overflow: hidden; box-shadow: var(--shadow-card); white-space: pre; overflow-x: auto; }
         .topology-box::after { content: 'ACTIVE'; position: absolute; top: 15px; right: 20px; font-size: 0.75rem; color: var(--accent); letter-spacing: 2px; font-weight: bold; }
         .topology-box span { color: var(--text-muted); }
         .topology-box .ip { color: var(--accent); font-size: 0.9rem; }
@@ -296,7 +362,7 @@
         .doc-block { background: var(--bg-terminal); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
         .doc-header { background: var(--bg-card); padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
         .doc-header span { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.85rem; }
-        .doc-body { padding: 1.5rem; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text); line-height: 1.8; }
+        .doc-body { padding: 1.5rem; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text); line-height: 1.8; white-space: pre; overflow-x: auto; }
         .doc-comment { color: var(--text-dim); } .doc-key { color: var(--primary); } .doc-val { color: var(--accent); } .doc-str { color: #fbbf24; }
 
         /* =========================================
@@ -328,8 +394,25 @@
         /* =========================================
            18. RESPONSIVE
            ========================================= */
-        @media (max-width: 1024px) { .hero-grid, .about-container, .lab-container, .lks-grid, .doc-grid { grid-template-columns: 1fr; gap: 3rem; } .hero-code-block { display: none; } nav { padding: 1rem 2rem; } section { padding: 6rem 2rem 3rem; } }
-        @media (max-width: 768px) { nav { padding: 1rem; } nav ul { display: none; } .mobile-menu-btn { display: block; } section { padding: 5rem 1.5rem 2rem; } .hero-title { font-size: 3rem; } .section-title { font-size: 2rem; } .widgets-container { display: none; } .skills-grid { grid-template-columns: 1fr; } * { cursor: auto; } .cursor-dot, .cursor-outline { display: none; } }
+        @media (max-width: 1024px) {
+            .hero-grid, .about-container, .lab-container, .lks-grid, .doc-grid, .ojm-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-code-block { display: none; }
+            nav { padding: 1rem 2rem; }
+            section { padding: 6rem 2rem 3rem; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            nav ul { display: none; }
+            nav.menu-open ul { display: flex; flex-direction: column; position: fixed; top: 64px; right: 1rem; background: var(--bg-card); padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; gap: 1.2rem; box-shadow: var(--shadow-card); }
+            .mobile-menu-btn { display: block; }
+            section { padding: 5rem 1.5rem 2rem; }
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2rem; }
+            .widgets-container { display: none; }
+            .skills-grid { grid-template-columns: 1fr; }
+            * { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -373,12 +456,20 @@
     <section id="home">
         <div class="hero-grid">
             <div>
+                <!-- ===== FOTO PROFIL: taruh file "ridho.png" di folder yang sama ===== -->
+                <div class="hero-avatar">
+                    <img src="ridho.png" alt="Foto Ridho Fitrawan" onerror="this.parentElement.classList.add('no-img')">
+                    <div class="avatar-fallback">RF</div>
+                </div>
+
                 <p class="hero-greeting">// Hello World, I'm</p>
                 <h1 class="hero-title">Ridho Fitrawan</h1>
                 <h2 class="hero-subtitle">Network & System Administrator<br><span class="typing-text">Cloud Engineer Enthusiast</span></h2>
                 <div class="hero-badges">
                     <div class="badge"><i class="fas fa-trophy"></i> 1st Winner LKS ITNSA Prov. Lampung 2025</div>
                     <div class="badge"><i class="fas fa-medal"></i> National MoE LKS ITNSA 2025</div>
+                    <div class="badge gold"><i class="fas fa-network-wired"></i> Top 5 OJM Mikrotik Regional Sumatera 2026</div>
+                    <div class="badge gold"><i class="fas fa-flag-checkered"></i> Finalis OJM Mikrotik Nasional 2026</div>
                 </div>
                 <p style="max-width: 600px; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8;">
                     I build infrastructure, solve complex networking problems, and create future cloud systems. From local enterprise networks to scalable cloud deployments, I ensure every packet reaches its destination securely and efficiently.
@@ -389,8 +480,8 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat-box">
-                        <div class="stat-number" data-target="2025">0</div>
-                        <div class="stat-label">National Competitor</div>
+                        <div class="stat-number" data-target="2026">0</div>
+                        <div class="stat-label">National Finalist</div>
                     </div>
                     <div class="stat-box">
                         <div class="stat-number" data-target="15">0</div>
@@ -416,11 +507,13 @@
                 <div class="code-line"><span class="line-number">5</span><span>&nbsp;&nbsp;<span class="code-var">"school"</span>: <span class="code-string">"SMKN 1 Liwa"</span>,</span></div>
                 <div class="code-line"><span class="line-number">6</span><span>&nbsp;&nbsp;<span class="code-var">"achievements"</span>: [</span></div>
                 <div class="code-line"><span class="line-number">7</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"LKS ITNSA Champion 2025"</span>,</span></div>
-                <div class="code-line"><span class="line-number">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"National MoE 2025"</span></span></div>
-                <div class="code-line"><span class="line-number">9</span><span>&nbsp;&nbsp;],</span></div>
-                <div class="code-line"><span class="line-number">10</span><span>&nbsp;&nbsp;<span class="code-var">"tech_stack"</span>: [<span class="code-string">"Mikrotik"</span>, <span class="code-string">"Debian"</span>, <span class="code-string">"Proxmox"</span>, <span class="code-string">"Docker"</span>],</span></div>
-                <div class="code-line"><span class="line-number">11</span><span>&nbsp;&nbsp;<span class="code-var">"status"</span>: <span class="code-string">"Ready for new challenges"</span></span></div>
-                <div class="code-line"><span class="line-number">12</span><span><span class="code-keyword">}</span> <span class="code-comment">// Future Cloud Engineer</span></span></div>
+                <div class="code-line"><span class="line-number">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"National MoE 2025"</span>,</span></div>
+                <div class="code-line"><span class="line-number">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Top 5 OJM Sumatera 2026"</span>,</span></div>
+                <div class="code-line"><span class="line-number">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Finalis OJM Nasional 2026"</span></span></div>
+                <div class="code-line"><span class="line-number">11</span><span>&nbsp;&nbsp;],</span></div>
+                <div class="code-line"><span class="line-number">12</span><span>&nbsp;&nbsp;<span class="code-var">"tech_stack"</span>: [<span class="code-string">"Mikrotik"</span>, <span class="code-string">"Debian"</span>, <span class="code-string">"Proxmox"</span>, <span class="code-string">"Docker"</span>],</span></div>
+                <div class="code-line"><span class="line-number">13</span><span>&nbsp;&nbsp;<span class="code-var">"status"</span>: <span class="code-string">"Ready for new challenges"</span></span></div>
+                <div class="code-line"><span class="line-number">14</span><span><span class="code-keyword">}</span> <span class="code-comment">// Future Cloud Engineer</span></span></div>
             </div>
         </div>
     </section>
@@ -433,7 +526,7 @@
             <h2 class="section-title">My <span>Profile & Journey</span></h2>
             <p class="section-subtitle">From curiosity about how systems communicate to building enterprise infrastructure and competing at the national level.</p>
         </div>
-        
+
         <div class="about-container">
             <div class="about-text">
                 <h2>From Curiosity to Cloud Infrastructure</h2>
@@ -441,10 +534,10 @@
                 <p class="text-muted">Through continuous learning and competition, I developed strong skills in Linux Server, Network Infrastructure, Virtualization, and Cloud Technology. I actively manage school networks and servers as a core member of Team Computer SMKN 1 Liwa.</p>
                 <p class="text-muted">My focus is on becoming a Professional Cloud Engineer or Network Engineer. I thrive in environments where I can design enterprise networks, deploy scalable server architectures, and solve critical system problems.</p>
                 <p class="text-muted">I don't just learn technology; I implement it. Breaking things and fixing them is part of my process. Whether it's configuring VLANs on Mikrotik, deploying Docker containers, or setting up a secure Cloudflare Tunnel, I ensure I understand the underlying protocol, not just the UI.</p>
-                
+
                 <h3 class="subsection-title">Work Philosophy</h3>
                 <p class="text-muted">I believe that the best way to learn technology is through hands-on implementation. Every failure is a debug log, and every success is a deployed service. I am highly adaptable, eager to learn new stacks, and obsessed with system optimization and security.</p>
-                
+
                 <h3 class="subsection-title">Daily Routine</h3>
                 <p class="text-muted">My typical day involves checking server monitoring dashboards (Uptime Kuma, Netdata), reviewing firewall logs, experimenting with new Docker containers, and studying for advanced cloud certifications. I also dedicate time to help my school's IT team ensure the network runs smoothly for practical exams.</p>
             </div>
@@ -473,6 +566,16 @@
                     <div class="timeline-year">August 2025</div>
                     <div class="timeline-title">🇮🇩 National Competition (MoE)</div>
                     <div class="timeline-desc">Achieved Medallion for Excellence at LKS Nasional 2025 in Jakarta & West Java. Representing Lampung province on the national stage.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-title">🌐 Top 5 OJM — Regional Sumatera (Tahap 1)</div>
+                    <div class="timeline-desc">Competed in Olimpiade Jaringan Mikrotik (OJM) Tahap 1 for the Sumatera region. Finished <strong>Top 5</strong> and qualified for the national final round.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">02 Oktober 2026</div>
+                    <div class="timeline-title">🏅 Finalis OJM Nasional 2026 — Yogyakarta</div>
+                    <div class="timeline-desc">Represented the Sumatera region as <strong>FINALIS</strong> at the OJM 2026 National Final (Antar SMK Tingkat Nasional), organized by Citraweb Solusi Teknologi together with Mikrotik, held in <strong>Yogyakarta</strong>.</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-year">Present & Future</div>
@@ -507,14 +610,14 @@
     </section>
 
     <!-- =========================================
-         ROAD TO LKS SECTION
+         ROAD TO LKS + OJM SECTION
          ========================================= -->
     <section id="road-to-lks">
         <div class="section-header">
-            <h2 class="section-title">Road to LKS <span>Nasional 2025</span></h2>
+            <h2 class="section-title">Road to LKS <span>& OJM</span></h2>
             <p class="section-subtitle">The journey to the national stage was intense. Hundreds of students competed, but only the best continued. Here is a breakdown of my preparation and the challenges I overcame.</p>
         </div>
-        
+
         <div class="lks-grid">
             <div class="lks-card">
                 <h3 style="font-family: var(--font-poppins); color: var(--text); margin-bottom: 1rem;">The Challenge</h3>
@@ -560,18 +663,40 @@
                     <li><strong>VPN & Secure Tunneling:</strong> Site-to-Site VPN, Client-to-Site, WireGuard, OpenVPN.</li>
                     <li><strong>Disaster Recovery:</strong> rsync, cron automated backups, Proxmox snapshots.</li>
                 </ul>
-                
+
                 <h3 class="subsection-title">The Result</h3>
                 <div class="card" style="padding: 1.5rem; border-color: var(--accent); margin-bottom: 1rem;">
                     <p style="color: var(--accent); font-family: var(--font-mono); margin-bottom: 0.5rem;">🏆 Provincial Level</p>
                     <h4 style="color: var(--text); font-size: 1.2rem;">Champion 1 (Juara 1) - Provinsi Lampung 2025</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">Secured the right to represent Lampung at the national level.</p>
                 </div>
-                <div class="card" style="padding: 1.5rem; border-color: var(--primary);">
+                <div class="card" style="padding: 1.5rem; border-color: var(--primary); margin-bottom: 1rem;">
                     <p style="color: var(--primary); font-family: var(--font-mono); margin-bottom: 0.5rem;">🇮🇩 National Level</p>
                     <h4 style="color: var(--text); font-size: 1.2rem;">Medallion for Excellence (MoE)</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">Held in DKI Jakarta & Jawa Barat. Achieved international standard competency recognition.</p>
                 </div>
+                <div class="card gold" style="padding: 1.5rem;">
+                    <p style="color: var(--warning); font-family: var(--font-mono); margin-bottom: 0.5rem;">🌐 OJM 2026 — Mikrotik</p>
+                    <h4 style="color: var(--text); font-size: 1.2rem;">Top 5 Regional Sumatera & Finalis Nasional</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Final round held in Yogyakarta — 02 Oktober 2026. Organized by Citraweb Solusi Teknologi x Mikrotik.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SUBSEKSI: ROAD TO OJM 2026 ===== -->
+        <h3 class="subsection-title">Road to OJM Mikrotik 2026</h3>
+        <p class="section-subtitle" style="margin-bottom: 2rem;">Olimpiade Jaringan Mikrotik (OJM) adalah kompetisi jaringan antar SMK Tingkat Nasional yang diselenggarakan oleh <strong style="color: var(--text);">Citraweb Solusi Teknologi</strong> bersama <strong style="color: var(--text);">Mikrotik</strong>. Perjalanan saya dimulai dari tahap kualifikasi regional hingga panggung final nasional di Yogyakarta.</p>
+
+        <div class="ojm-grid">
+            <div class="ojm-card">
+                <p class="ojm-label">// TAHAP 1 — REGIONAL SUMATERA</p>
+                <h4>🌐 Top 5 Wilayah Sumatera</h4>
+                <p>Kualifikasi Tahap 1 melawan peserta terbaik dari seluruh wilayah Sumatera. Fokus pada konfigurasi RouterOS: routing dinamis, firewall filtering, VLAN, bandwidth management, dan troubleshooting jaringan. Berhasil finis di posisi <strong style="color: var(--warning);">Top 5</strong> dan mengamankan tiket ke babak final nasional.</p>
+            </div>
+            <div class="ojm-card">
+                <p class="ojm-label">// FINAL — YOGYAKARTA, 02 OKTOBER 2026</p>
+                <h4>🏅 Finalis OJM Nasional 2026</h4>
+                <p>Final round <strong style="color: var(--warning);">Antar SMK Tingkat Nasional</strong> yang diselenggarakan di <strong style="color: var(--warning);">Yogyakarta</strong> oleh Citraweb Solusi Teknologi bersama Mikrotik. Bertemu dengan finalis terbaik dari seluruh Indonesia dan meraih sertifikat <strong style="color: var(--warning);">FINALIS</strong> resmi tingkat nasional.</p>
             </div>
         </div>
     </section>
@@ -585,6 +710,7 @@
             <p class="section-subtitle">Validation of hard work, technical mastery, and dedication to the craft of infrastructure engineering. These are the official documents of my journey.</p>
         </div>
         <div class="grid-container">
+
             <div class="card">
                 <div class="cert-image-container">
                     <img src="https://z-cdn-media.chatglm.cn/files/6a2215c8-f4aa-4036-ba61-848a3ab39e53.png?auth_key=1884548453-abfaad36e7544e68ad2dcfc276feff79-0-d21a7e43acd5b22f3de03b20113281fa" alt="Sertifikat Juara 1 LKS Provinsi Lampung" class="cert-image">
@@ -604,9 +730,10 @@
                     <span class="tag">Mikrotik</span><span class="tag">Debian</span><span class="tag">Routing</span><span class="tag">VPN</span>
                 </div>
             </div>
+
             <div class="card">
                 <div class="cert-image-container">
-                    <img src="https://z-cdn-media.chatglm.cn/files/7ec7655d-f2b6-45e6-a286-7f4b1e1b78ef.png?auth_key=1884548453-77ea89f71bf0411da9759646a4577fcc-0-a22be08c0cb3f189119047a12c2b03c3" alt="Sertifikat Moe LKS Nasional" class="cert-image">
+                    <img src="https://z-cdn-media.chatglm.cn/files/7ec7655d-f2b6-45e6-a286-7f4b1e1b78ef.png?auth_key=1884548453-77ea89f71bf0411da9759646a4577fcc-0-a22be08c0cb3f189119047a12c2b03c3" alt="Sertifikat MoE LKS Nasional" class="cert-image">
                     <div class="cert-overlay">Official Document - National Level</div>
                 </div>
                 <div class="card-icon">🥇</div>
@@ -617,27 +744,54 @@
                     <li><strong>Category:</strong> IT Network System Administration</li>
                     <li><strong>Issued by:</strong> Pusat Prestasi Nasional, Kemendikdasmen</li>
                     <li><strong>Doc Number:</strong> 21238/PPN/DIKMEN/2025</li>
-                    <li><strong>Signatory:</strong> Dr. Maria Veronica Irene Herdjiono, S.E., M.Si.</li>
+                    <li><strong>Signatory:</strong> Kepala Pusat Prestasi Nasional</li>
                 </ul>
                 <div class="tag-container">
-                    <span class="tag">Enterprise Network</span><span class="tag">Server Deployment</span><span class="tag">Infrastructure Design</span>
+                    <span class="tag">Mikrotik</span><span class="tag">Debian</span><span class="tag">HAProxy</span><span class="tag">VLAN</span>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-icon">💻</div>
-                <h3>Team Computer SMKN 1 Liwa</h3>
-                <span class="subtitle">Core Member & Infrastructure Handler</span>
-                <p>Active in the organization, trusted to handle critical technical operations of the school's IT infrastructure.</p>
+
+            <!-- ===== KARTU BARU: TOP 5 OJM SUMATERA ===== -->
+            <div class="card gold">
+                <div class="card-icon">🌐</div>
+                <h3>OJM Mikrotik 2026 — Tahap 1</h3>
+                <span class="subtitle">Top 5 — Wilayah Sumatera</span>
+                <p>Qualification stage of Olimpiade Jaringan Mikrotik (OJM) 2026 for the Sumatera region. Competed against students from all across Sumatera and secured a place among the <strong>Top 5</strong>, qualifying for the national final round.</p>
                 <ul class="detail-list">
-                    <li>School Network Management & Troubleshooting</li>
-                    <li>Print Server Maintenance</li>
-                    <li>Practical Exam Infrastructure Preparation</li>
-                    <li>Server Deployment & Security</li>
+                    <li><strong>Event:</strong> Olimpiade Jaringan Mikrotik 2026</li>
+                    <li><strong>Stage:</strong> Tahap 1 — Regional Sumatera</li>
+                    <li><strong>Result:</strong> Top 5 (Qualified for Final)</li>
+                    <li><strong>Organizer:</strong> Citraweb Solusi Teknologi x Mikrotik</li>
                 </ul>
                 <div class="tag-container">
-                    <span class="tag">Network Mgmt</span><span class="tag">Server Mgmt</span><span class="tag">Leadership</span>
+                    <span class="tag gold">RouterOS</span><span class="tag gold">Firewall</span><span class="tag gold">Routing</span><span class="tag gold">QoS</span>
                 </div>
             </div>
+
+            <!-- ===== KARTU BARU: FINALIS OJM 2026 (DENGAN SERTIFIKAT) ===== -->
+            <div class="card gold">
+                <div class="cert-image-container">
+                    <span class="cert-verified">✔ FINALIS</span>
+                    <img src="sertifikat-ojm-finalis.png" alt="Sertifikat Finalis OJM Mikrotik 2026 - Ridho Fitrawan" class="cert-image">
+                    <div class="cert-overlay">Official Document - National Final</div>
+                </div>
+                <div class="card-icon">🏅</div>
+                <h3>OJM 2026 — Finalis Nasional</h3>
+                <span class="subtitle">Final Round — Yogyakarta, 02 Oktober 2026</span>
+                <p>Final round of the Olimpiade Jaringan Mikrotik 2026 (Antar SMK Tingkat Nasional) held in Yogyakarta, organized by <strong>Citraweb Solusi Teknologi</strong> together with <strong>Mikrotik</strong>. Officially recognized as a <strong>NATIONAL FINALIST</strong>.</p>
+                <ul class="detail-list">
+                    <li><strong>Event:</strong> Olimpiade Jaringan Mikrotik 2026 — Antar SMK Tingkat Nasional</li>
+                    <li><strong>Role:</strong> FINALIS — No. Peserta 26010030156</li>
+                    <li><strong>Certificate No:</strong> OJM/2026/11585</li>
+                    <li><strong>Issued by:</strong> Citraweb Solusi Teknologi x Mikrotik</li>
+                    <li><strong>Date & Location:</strong> 02 Oktober 2026 — Yogyakarta</li>
+                    <li><strong>Signatory:</strong> Valens Riyadi</li>
+                </ul>
+                <div class="tag-container">
+                    <span class="tag gold">Mikrotik</span><span class="tag gold">RouterOS</span><span class="tag gold">Networking</span><span class="tag gold">National Finalist</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -646,75 +800,49 @@
          ========================================= -->
     <section id="skills">
         <div class="section-header">
-            <h2 class="section-title">Tech <span>Arsenal</span></h2>
-            <p class="section-subtitle">My technical stack built through competitions, self-learning, and real-world infrastructure deployment. I don't just know these tools; I use them daily.</p>
+            <h2 class="section-title">Skills <span>Dashboard</span></h2>
+            <p class="section-subtitle">Technical competencies built through competitions, real-world deployments, and countless hours in the lab.</p>
         </div>
         <div class="skills-grid">
-            <div class="skill-card fade-in">
+            <div class="skill-card">
                 <div class="skill-header">
-                    <span class="skill-name"><i class="fas fa-network-wired"></i> Networking Infrastructure</span>
-                    <span class="skill-percent">90%</span>
+                    <div class="skill-name"><i class="fas fa-network-wired" style="color: var(--primary);"></i> Network Infrastructure</div>
+                    <div class="skill-percent">95%</div>
+                </div>
+                <div class="progress-bg"><div class="progress-bar" data-width="95"></div></div>
+                <div class="tech-list">
+                    <span class="tech-item">Mikrotik RouterOS</span><span class="tech-item">VLAN & Trunking</span><span class="tech-item">OSPF / BGP</span><span class="tech-item">QoS & Queue Trees</span><span class="tech-item">Bridge & STP</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-name"><i class="fab fa-linux" style="color: var(--primary);"></i> Linux Server Administration</div>
+                    <div class="skill-percent">92%</div>
+                </div>
+                <div class="progress-bg"><div class="progress-bar" data-width="92"></div></div>
+                <div class="tech-list">
+                    <span class="tech-item">Debian</span><span class="tech-item">Ubuntu</span><span class="tech-item">Nginx / Apache</span><span class="tech-item">BIND9 DNS</span><span class="tech-item">Postfix + Dovecot</span><span class="tech-item">Bash Scripting</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-name"><i class="fas fa-cloud" style="color: var(--primary);"></i> Virtualization & Cloud</div>
+                    <div class="skill-percent">88%</div>
+                </div>
+                <div class="progress-bg"><div class="progress-bar" data-width="88"></div></div>
+                <div class="tech-list">
+                    <span class="tech-item">Proxmox VE</span><span class="tech-item">Docker</span><span class="tech-item">Cloudflare Tunnel</span><span class="tech-item">KVM</span><span class="tech-item">Backup & Snapshot</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-name"><i class="fas fa-shield-alt" style="color: var(--primary);"></i> Security & Firewall</div>
+                    <div class="skill-percent">90%</div>
                 </div>
                 <div class="progress-bg"><div class="progress-bar" data-width="90"></div></div>
                 <div class="tech-list">
-                    <span class="tech-item">Mikrotik RouterOS</span><span class="tech-item">TCP/IP</span><span class="tech-item">Subnetting</span><span class="tech-item">VLAN</span><span class="tech-item">Routing (OSPF/BGP)</span><span class="tech-item">Firewall</span><span class="tech-item">NAT</span><span class="tech-item">VPN (Site-to-Site)</span><span class="tech-item">Wireless</span><span class="tech-item">Enterprise Topology</span>
+                    <span class="tech-item">Firewall Filter/NAT</span><span class="tech-item">WireGuard</span><span class="tech-item">OpenVPN / IPSec</span><span class="tech-item">SSL/TLS</span><span class="tech-item">Hardening</span>
                 </div>
-                <p class="text-muted" style="margin-top: 1.5rem; font-size: 0.9rem;">Deep understanding of enterprise routing, switching, and security policies. Capable of designing multi-zone networks with strict access control.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <div class="skill-header">
-                    <span class="skill-name"><i class="fab fa-linux"></i> Linux & Server Administration</span>
-                    <span class="skill-percent">85%</span>
-                </div>
-                <div class="progress-bg"><div class="progress-bar" data-width="85"></div></div>
-                <div class="tech-list">
-                    <span class="tech-item">Debian Server</span><span class="tech-item">Ubuntu Server</span><span class="tech-item">Nginx</span><span class="tech-item">Apache</span><span class="tech-item">BIND9 DNS</span><span class="tech-item">Postfix+Dovecot Mail</span><span class="tech-item">LDAP</span><span class="tech-item">HAProxy</span><span class="tech-item">Keepalived</span><span class="tech-item">SSL Certificates</span>
-                </div>
-                <p class="text-muted" style="margin-top: 1.5rem; font-size: 0.9rem;">Proficient in managing headless Linux servers. From web servers to complex mail infrastructures and centralized authentication systems.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <div class="skill-header">
-                    <span class="skill-name"><i class="fas fa-cube"></i> Virtualization</span>
-                    <span class="skill-percent">80%</span>
-                </div>
-                <div class="progress-bg"><div class="progress-bar" data-width="80"></div></div>
-                <div class="tech-list">
-                    <span class="tech-item">Proxmox VE</span><span class="tech-item">VMware ESXi</span><span class="tech-item">VMware Workstation</span><span class="tech-item">VM Management</span><span class="tech-item">Snapshots & Backup</span>
-                </div>
-                <p class="text-muted" style="margin-top: 1.5rem; font-size: 0.9rem;">Experienced in creating and managing virtual environments to maximize hardware utilization and isolate services securely.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <div class="skill-header">
-                    <span class="skill-name"><i class="fab fa-docker"></i> Docker & Monitoring</span>
-                    <span class="skill-percent">75%</span>
-                </div>
-                <div class="progress-bg"><div class="progress-bar" data-width="75"></div></div>
-                <div class="tech-list">
-                    <span class="tech-item">Docker</span><span class="tech-item">Portainer</span><span class="tech-item">Uptime Kuma</span><span class="tech-item">Zabbix</span><span class="tech-item">Netdata</span><span class="tech-item">Cacti</span><span class="tech-item">Jellyfin</span><span class="tech-item">Seafile</span>
-                </div>
-                <p class="text-muted" style="margin-top: 1.5rem; font-size: 0.9rem;">Containerizing applications for easy deployment and scaling. Implementing robust monitoring to ensure 99.9% uptime.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <div class="skill-header">
-                    <span class="skill-name"><i class="fas fa-cloud"></i> Cloud Engineering</span>
-                    <span class="skill-percent">70%</span>
-                </div>
-                <div class="progress-bg"><div class="progress-bar" data-width="70"></div></div>
-                <div class="tech-list">
-                    <span class="tech-item">Cloudflare Tunnel</span><span class="tech-item">DNS Management</span><span class="tech-item">Self-Hosting</span><span class="tech-item">Public Service Deployment</span><span class="tech-item">Linux Cloud Server</span>
-                </div>
-                <p class="text-muted" style="margin-top: 1.5rem; font-size: 0.9rem;">Bridging local infrastructure to the cloud securely. Utilizing zero-trust architectures and reverse proxies for public access.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <div class="skill-header">
-                    <span class="skill-name"><i class="fas fa-shield-alt"></i> Security & Troubleshooting</span>
-                    <span class="skill-percent">85%</span>
-                </div>
-                <div class="progress-bg"><div class="progress-bar" data-width="85"></div></div>
-                <div class="tech-list">
-                    <span class="tech-item">Wireshark</span><span class="tech-item">Packet Analysis</span><span class="tech-item">Firewall Rules</span><span class="tech-item">VPN Security</span><span class="tech-item">Log Analysis</span><span class="tech-item">Penetration Testing Basics</span>
-                </div>
-                <p class="text-muted" style="margin-top: 1.5rem; font-size: 0.9rem;">Identifying threats, mitigating risks, and resolving complex network issues under pressure.</p>
             </div>
         </div>
     </section>
@@ -725,354 +853,230 @@
     <section id="projects">
         <div class="section-header">
             <h2 class="section-title">Project <span>Showcase</span></h2>
-            <p class="section-subtitle">Real-world implementations of enterprise networks, server clusters, and cloud infrastructure. These aren't just tutorials; they are systems I designed and maintain.</p>
+            <p class="section-subtitle">Real deployments, not just theories. Every project here runs in production or powers my school's daily operations.</p>
         </div>
         <div class="grid-container">
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <div class="project-header">
-                    <div class="project-icon">🌐</div>
-                    <div class="project-status">Production Ready</div>
+                    <div class="project-icon"><i class="fas fa-school"></i></div>
+                    <span class="project-status">● LIVE</span>
                 </div>
-                <h3 class="project-title">Enterprise Network Infrastructure</h3>
-                <p class="project-role">Role: Network Administrator</p>
-                <p class="project-desc">Designed and implemented a secure, scalable enterprise network topology. Included DMZ for public services, internal networks for staff, and load balancing for high availability. Implemented strict firewall policies to prevent lateral movement.</p>
+                <h3 class="project-title">SMKN 1 Liwa Network Infrastructure</h3>
+                <p class="project-role">Lead Network Administrator — Team Computer</p>
+                <p class="project-desc">Redesign and manage the school's entire network: segmented VLANs for students, teachers, and servers; bandwidth management per-user; and centralized internet gateway with Mikrotik RouterOS.</p>
                 <div class="project-challenges">
-                    <h5>CHALLENGES & SOLUTIONS</h5>
+                    <h5><i class="fas fa-exclamation-triangle"></i> Challenges Solved</h5>
                     <ul>
-                        <li>Isolated DMZ using VLANs to secure public-facing servers.</li>
-                        <li>Configured HAProxy and Keepalived for seamless failover.</li>
-                        <li>Implemented Site-to-Site VPN for remote branch connectivity.</li>
+                        <li>Network congestion during UKOM (practical exams)</li>
+                        <li>Bandwidth hogging from a single subnet</li>
+                        <li>Unmanaged switch topology migration</li>
                     </ul>
                 </div>
                 <div class="tag-container">
-                    <span class="tag">Mikrotik</span><span class="tag">Debian Server</span><span class="tag">HAProxy</span><span class="tag">Keepalived</span><span class="tag">DMZ Zone</span><span class="tag">VLAN</span>
+                    <span class="tag">Mikrotik</span><span class="tag">VLAN</span><span class="tag">QoS</span><span class="tag">Hotspot</span>
                 </div>
             </div>
-
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <div class="project-header">
-                    <div class="project-icon">☁️</div>
-                    <div class="project-status">Active Deployment</div>
+                    <div class="project-icon"><i class="fas fa-cubes"></i></div>
+                    <span class="project-status">● RUNNING</span>
                 </div>
-                <h3 class="project-title">Private Cloud Infrastructure</h3>
-                <p class="project-role">Role: Cloud Engineer</p>
-                <p class="project-desc">Built a scalable server environment using Proxmox, containerized with Docker, and securely exposed to the public internet via Cloudflare Tunnel without opening public ports on the router. This setup ensures zero-trust network access.</p>
+                <h3 class="project-title">School Proxmox Virtualization Cluster</h3>
+                <p class="project-role">Infrastructure Engineer</p>
+                <p class="project-desc">Deployed a Proxmox VE host to consolidate school services into VMs: exam servers, web services, and print servers — with scheduled snapshots and automated backups for disaster recovery.</p>
                 <div class="project-challenges">
-                    <h5>CHALLENGES & SOLUTIONS</h5>
+                    <h5><i class="fas fa-exclamation-triangle"></i> Challenges Solved</h5>
                     <ul>
-                        <li>Bypassed dynamic IP limitations using Cloudflare Tunnel.</li>
-                        <li>Containerized applications using Docker for easy scaling.</li>
-                        <li>Ensured high availability through Proxmox clustering.</li>
+                        <li>Legacy hardware into multi-VM host</li>
+                        <li>Zero-downtime exam server deployment</li>
+                        <li>Automated nightly rsync backups</li>
                     </ul>
                 </div>
                 <div class="tag-container">
-                    <span class="tag">Proxmox</span><span class="tag">Docker</span><span class="tag">Cloudflare Tunnel</span><span class="tag">Zero Trust</span><span class="tag">Linux Cloud Server</span>
+                    <span class="tag">Proxmox</span><span class="tag">Debian</span><span class="tag">KVM</span><span class="tag">Backup</span>
                 </div>
             </div>
-
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <div class="project-header">
-                    <div class="project-icon">🖥️</div>
-                    <div class="project-status">Home Lab</div>
+                    <div class="project-icon"><i class="fas fa-terminal"></i></div>
+                    <span class="project-status">● SELF-HOSTED</span>
                 </div>
-                <h3 class="project-title">Self-Hosted Digital Life</h3>
-                <p class="project-role">Role: System Administrator</p>
-                <p class="project-desc">Deployed various self-hosted services to replace cloud SaaS, including file sharing, media streaming, and real-time server monitoring. This project ensures data privacy while maintaining accessibility from anywhere.</p>
+                <h3 class="project-title">Self-Hosted Monitoring & Services Stack</h3>
+                <p class="project-role">DevOps / Self-Hosting Enthusiast</p>
+                <p class="project-desc">Dockerized stack: Uptime Kuma for monitoring, Netdata for real-time metrics, Nextcloud for storage, and Cloudflare Tunnel for secure exposure — all without opening a single port on the firewall.</p>
                 <div class="project-challenges">
-                    <h5>CHALLENGES & SOLUTIONS</h5>
+                    <h5><i class="fas fa-exclamation-triangle"></i> Challenges Solved</h5>
                     <ul>
-                        <li>Replaced Google Drive with Seafile for secure file sync.</li>
-                        <li>Set up Jellyfin for media streaming over HTTPS.</li>
-                        <li>Used Uptime Kuma & Netdata for 24/7 infrastructure monitoring.</li>
+                        <li>Secure remote access without public IP</li>
+                        <li>Docker networking across VLANs</li>
+                        <li>Resource optimization on limited RAM</li>
                     </ul>
                 </div>
                 <div class="tag-container">
-                    <span class="tag">Filebrowser</span><span class="tag">Seafile</span><span class="tag">Jellyfin</span><span class="tag">Uptime Kuma</span><span class="tag">Netdata</span>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-header">
-                    <div class="project-icon">📧</div>
-                    <div class="project-status">LKS Simulation</div>
-                </div>
-                <h3 class="project-title">Enterprise Mail Server Setup</h3>
-                <p class="project-role">Role: Mail Administrator</p>
-                <p class="project-desc">Built a complete mail server stack from scratch using Debian, Postfix, and Dovecot. Configured SPF, DKIM, and DMARC records to ensure high deliverability rates and prevent spoofing.</p>
-                <div class="project-challenges">
-                    <h5>CHALLENGES & SOLUTIONS</h5>
-                    <ul>
-                        <li>Configured reverse DNS (rDNS) for IP reputation.</li>
-                        <li>Implemented SSL/TLS encryption for transit and storage.</li>
-                        <li>Set up LDAP integration for centralized user authentication.</li>
-                    </ul>
-                </div>
-                <div class="tag-container">
-                    <span class="tag">Postfix</span><span class="tag">Dovecot</span><span class="tag">Debian</span><span class="tag">SSL/TLS</span><span class="tag">LDAP</span><span class="tag">DNS Records</span>
-                </div>
-            </div>
-            
-            <div class="project-card fade-in">
-                <div class="project-header">
-                    <div class="project-icon">⚡</div>
-                    <div class="project-status">High Availability</div>
-                </div>
-                <h3 class="project-title">Load Balancer & Reverse Proxy</h3>
-                <p class="project-role">Role: Infrastructure Engineer</p>
-                <p class="project-desc">Implemented HAProxy and Keepalived to distribute traffic across multiple web servers. Ensured zero downtime during peak loads and automated SSL certificate renewal using Let's Encrypt.</p>
-                <div class="project-challenges">
-                    <h5>CHALLENGES & SOLUTIONS</h5>
-                    <ul>
-                        <li>Configured active-passive failover with Keepalived VRRP.</li>
-                        <li>Set up HAProxy ACLs for path-based routing.</li>
-                        <li>Automated SSL renewal via certbot and cron jobs.</li>
-                    </ul>
-                </div>
-                <div class="tag-container">
-                    <span class="tag">HAProxy</span><span class="tag">Keepalived</span><span class="tag">VRRP</span><span class="tag">Let's Encrypt</span><span class="tag">Nginx</span>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-header">
-                    <div class="project-icon">🔒</div>
-                    <div class="project-status">Security Project</div>
-                </div>
-                <h3 class="project-title">Site-to-Site VPN Infrastructure</h3>
-                <p class="project-role">Role: Network Security Engineer</p>
-                <p class="project-desc">Designed a secure Site-to-Site VPN using Mikrotik RouterOS to connect geographically dispersed networks into a single unified infrastructure. Implemented strong encryption and firewall rules to restrict access.</p>
-                <div class="project-challenges">
-                    <h5>CHALLENGES & SOLUTIONS</h5>
-                    <ul>
-                        <li>Configured IPSec and L2TP tunnels for secure transit.</li>
-                        <li>Resolved MTU and fragmentation issues for optimal performance.</li>
-                        <li>Implemented routing policies to prevent network conflicts.</li>
-                    </ul>
-                </div>
-                <div class="tag-container">
-                    <span class="tag">Mikrotik</span><span class="tag">IPSec</span><span class="tag">L2TP</span><span class="tag">VPN</span><span class="tag">Routing</span>
+                    <span class="tag">Docker</span><span class="tag">Uptime Kuma</span><span class="tag">Cloudflare</span><span class="tag">Nextcloud</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- =========================================
-         LAB INFRASTRUCTURE SECTION
+         LAB SECTION
          ========================================= -->
     <section id="lab">
         <div class="section-header">
-            <h2 class="section-title">My Home <span>Lab & Setup</span></h2>
-            <p class="section-subtitle">I run a continuous home lab to simulate enterprise environments, test configurations, and master troubleshooting. This is where the real learning happens.</p>
+            <h2 class="section-title">Lab <span>Infrastructure</span></h2>
+            <p class="section-subtitle">My home lab — the battlefield where every competition module is rehearsed before the real thing.</p>
         </div>
         <div class="lab-container">
-            <div class="topology-box">
-                <p>Internet (ISP)</p>
-                <p>└── <span>Router (Mikrotik)</span> <span class="ip">[10.0.0.1]</span></p>
-                <p>    └── <span>Proxmox Server</span> <span class="ip">[10.0.0.10]</span></p>
-                <p>        ├── <span class="vm">Web Server (Nginx/Apache)</span></p>
-                <p>        ├── <span class="vm">DNS Server (BIND9)</span></p>
-                <p>        ├── <span class="vm">Mail Server (Postfix+Dovecot)</span></p>
-                <p>        ├── <span class="vm">Load Balancer (HAProxy)</span></p>
-                <p>        ├── <span class="vm">Monitoring (Zabbix/Uptime Kuma)</span></p>
-                <p>        └── <span class="vm">Docker Host (Portainer)</span></p>
-                <br>
-                <p>└── <span>Cloudflare Tunnel</span> <span class="ip">[Secure Public Access]</span></p>
-            </div>
+            <div class="topology-box"><span># Live Topology —</span> Home Lab
+[ INTERNET ]
+     |
+[ ISP Fiber ]
+     |
+[ <span class="vm">rb-core</span> ] <span class="ip">10.10.10.1</span> — Mikrotik CHR v7
+     |
+     +-- [VLAN 10] <span>Students</span>  <span class="ip">10.10.10.0/24</span>
+     +-- [VLAN 20] <span>Servers</span>   <span class="ip">10.10.20.0/24</span>
+     |       |
+     |       +-- [ <span class="vm">srv-01</span> ] Debian 12 — <span class="ip">DNS / WEB</span>
+     |       +-- [ <span class="vm">srv-02</span> ] Debian 12 — <span class="ip">MAIL / VPN</span>
+     |       +-- [ <span class="vm">proxmox</span> ] VE — <span class="ip">VM Cluster</span>
+     +-- [VLAN 30] <span>Admin Mgmt</span> <span class="ip">10.10.30.0/24</span></div>
             <div class="lab-info">
-                <h3>Currently Exploring</h3>
-                <p class="text-muted">I don't just learn theory. I build real servers at home to simulate enterprise environments. My lab runs 24/7, allowing me to test disaster recovery scenarios, automate deployments, and monitor system health.</p>
-                <ul class="detail-list">
-                    <li><strong>Self-hosting & Automation:</strong> Moving away from SaaS to self-hosted alternatives.</li>
-                    <li><strong>Cloud Infrastructure Scaling:</strong> Preparing for professional cloud certifications.</li>
-                    <li><strong>Advanced Network Troubleshooting:</strong> Packet analysis and deep protocol inspection.</li>
-                </ul>
-                
-                <h4 style="font-family: var(--font-poppins); color: var(--text); margin-top: 2rem; margin-bottom: 1rem;">Active Services:</h4>
+                <h3>Production-Grade Home Lab</h3>
+                <p class="text-muted">A fully segmented lab environment with VLAN isolation, centralized authentication, and monitoring — mirroring enterprise topologies used in LKS and OJM modules.</p>
                 <div class="lab-services">
-                    <div class="service-item"><div class="service-icon"><i class="fas fa-file-alt"></i></div><span class="service-name">Filebrowser</span></div>
-                    <div class="service-item"><div class="service-icon"><i class="fas fa-sync"></i></div><span class="service-name">Seafile</span></div>
-                    <div class="service-item"><div class="service-icon"><i class="fas fa-film"></i></div><span class="service-name">Jellyfin</span></div>
-                    <div class="service-item"><div class="service-icon"><i class="fas fa-chart-line"></i></div><span class="service-name">Uptime Kuma</span></div>
-                    <div class="service-item"><div class="service-icon"><i class="fas fa-database"></i></div><span class="service-name">Netdata</span></div>
-                    <div class="service-item"><div class="service-icon"><i class="fas fa-cloud"></i></div><span class="service-name">Cloudflare</span></div>
+                    <div class="service-item"><div class="service-icon"><i class="fas fa-globe"></i></div><span class="service-name">DNS — BIND9</span></div>
+                    <div class="service-item"><div class="service-icon"><i class="fas fa-envelope"></i></div><span class="service-name">Mail — Postfix</span></div>
+                    <div class="service-item"><div class="service-icon"><i class="fas fa-lock"></i></div><span class="service-name">VPN — WireGuard</span></div>
+                    <div class="service-item"><div class="service-icon"><i class="fas fa-chart-line"></i></div><span class="service-name">Monitor — Zabbix</span></div>
+                    <div class="service-item"><div class="service-icon"><i class="fas fa-database"></i></div><span class="service-name">Backup — PBS</span></div>
+                    <div class="service-item"><div class="service-icon"><i class="fas fa-box"></i></div><span class="service-name">Apps — Docker</span></div>
                 </div>
             </div>
         </div>
-
-        <h3 class="subsection-title">Daily Driver Hardware</h3>
         <div class="setup-grid">
             <div class="device-card">
-                <div class="device-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="device-icon"><i class="fas fa-router"></i></div>
                 <div class="device-info">
-                    <h4>Acer Aspire Lite 14</h4>
-                    <p>Intel Core i3-1215U Gen 12<br>8GB RAM | NVMe SSD<br>Windows 11 Pro</p>
+                    <h4>Mikrotik CHR + Routerboard</h4>
+                    <p>Core routing, firewall, VLAN termination, and queue-based bandwidth management.</p>
                 </div>
             </div>
             <div class="device-card">
-                <div class="device-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="device-icon"><i class="fas fa-server"></i></div>
                 <div class="device-info">
-                    <h4>iPhone 12</h4></h4>
-                    <p>Upgraded from Infinix GT 30 Pro 5g<br>For on-the-go network monitoring & testing.</p>
+                    <h4>Proxmox VE Host</h4>
+                    <p>Runs multiple Debian/Ubuntu VMs for services, testing, and competition simulation.</p>
+                </div>
+            </div>
+            <div class="device-card">
+                <div class="device-icon"><i class="fab fa-linux"></i></div>
+                <div class="device-info">
+                    <h4>Debian Servers ×2</h4>
+                    <p>DNS, Web, Mail, VPN, monitoring agents — hardened per LKS ITNSA standards.</p>
+                </div>
+            </div>
+            <div class="device-card">
+                <div class="device-icon"><i class="fas fa-ethernet"></i></div>
+                <div class="device-info">
+                    <h4>Managed Switch</h4>
+                    <p>VLAN tagging, trunk ports, and port isolation for realistic multi-segment labs.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- =========================================
-         DOCUMENTATION / WIKI SECTION
+         DOCS SECTION
          ========================================= -->
     <section id="docs">
         <div class="section-header">
-            <h2 class="section-title">Technical <span>Documentation</span></h2>
-            <p class="section-subtitle">Code snippets and configuration examples from my personal wiki. Documenting solutions ensures I never solve the same problem twice.</p>
+            <h2 class="section-title">Field <span>Notes & Configs</span></h2>
+            <p class="section-subtitle">Snippets from my working notes — the exact kind of configurations sharpened through LKS and OJM 2026.</p>
         </div>
         <div class="doc-grid">
             <div class="doc-block">
-                <div class="doc-header"><span>network_config.rsc</span> <i class="fab fa-mikrotik" style="color:var(--primary)"></i></div>
-                <div class="doc-body">
-                    <span class="doc-comment"># Mikrotik VLAN & DHCP Setup</span><br>
-                    <span class="doc-key">/interface vlan</span> add name=vlan10 vlan-id=10 interface=bridge<br>
-                    <span class="doc-key">/interface vlan</span> add name=vlan20 vlan-id=20 interface=bridge<br>
-                    <br>
-                    <span class="doc-comment"># DHCP Server Configuration</span><br>
-                    <span class="doc-key">/ip pool</span> add name=pool10 ranges=192.168.10.10-192.168.10.100<br>
-                    <span class="doc-key">/ip dhcp-server</span> add interface=vlan10 address-pool=pool10<br>
-                    <br>
-                    <span class="doc-comment"># Firewall NAT Rules</span><br>
-                    <span class="doc-key">/ip firewall nat</span> add chain=srcnat src-address=192.168.10.0/24 action=masquerade
-                </div>
+                <div class="doc-header"><span>mikrotik-core.rsc</span><i class="fas fa-terminal" style="color: var(--primary);"></i></div>
+                <div class="doc-body"><span class="doc-comment"># OJM 2026 — RouterOS Practice Snippet</span>
+<span class="doc-key">/interface bridge</span> <span class="doc-val">add</span> name=br-core vlan-filtering=<span class="doc-str">yes</span>
+<span class="doc-key">/interface bridge vlan</span> <span class="doc-val">add</span> bridge=br-core \
+    tagged=br-core vlan-ids=<span class="doc-str">10,20,30</span>
+<span class="doc-key">/ip firewall filter</span> <span class="doc-val">add</span> chain=forward \
+    action=drop connection-state=<span class="doc-str">invalid</span>
+<span class="doc-key">/routing ospf instance</span> <span class="doc-val">add</span> name=default \
+    router-id=<span class="doc-str">10.10.10.1</span>
+<span class="doc-key">/queue tree</span> <span class="doc-val">add</span> name=qos-dl parent=ether1 \
+    max-limit=<span class="doc-str">100M</span></div>
             </div>
             <div class="doc-block">
-                <div class="doc-header"><span>cloudflare_tunnel.sh</span> <i class="fas fa-cloud" style="color:var(--primary)"></i></div>
-                <div class="doc-body">
-                    <span class="doc-comment">#!/bin/bash</span><br>
-                    <span class="doc-comment"># Expose local web server via Cloudflare Tunnel</span><br>
-                    <br>
-                    <span class="doc-key">sudo</span> cloudflared tunnel create ridho_web<br>
-                    <span class="doc-key">sudo</span> cloudflared tunnel route dns ridho_web web.ridho.dev<br>
-                    <br>
-                    <span class="doc-comment"># Config YAML</span><br>
-                    <span class="doc-val">tunnel:</span> <span class="doc-str">"ridho_web"</span><br>
-                    <span class="doc-val">credentials-file:</span> <span class="doc-str">"/root/.cloudflared/ridho_web.json"</span><br>
-                    <span class="doc-val">ingress:</span><br>
-                    &nbsp;&nbsp;- <span class="doc-val">hostname:</span> <span class="doc-str">"web.ridho.dev"</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="doc-val">service:</span> <span class="doc-str">"http://localhost:80"</span><br>
-                    &nbsp;&nbsp;- <span class="doc-val">service:</span> <span class="doc-str">"http_status:404"</span>
-                </div>
-            </div>
-            <div class="doc-block">
-                <div class="doc-header"><span>haproxy.cfg</span> <i class="fas fa-server" style="color:var(--primary)"></i></div>
-                <div class="doc-body">
-                    <span class="doc-comment"># HAProxy Load Balancer Configuration</span><br>
-                    <span class="doc-key">global</span><br>
-                    &nbsp;&nbsp;log /dev/log local0<br>
-                    &nbsp;&nbsp;maxconn 2000<br>
-                    <br>
-                    <span class="doc-key">frontend</span> http_front<br>
-                    &nbsp;&nbsp;bind *:80<br>
-                    &nbsp;&nbsp;default_backend web_servers<br>
-                    <br>
-                    <span class="doc-key">backend</span> web_servers<br>
-                    &nbsp;&nbsp;balance roundrobin<br>
-                    &nbsp;&nbsp;server web1 192.168.1.10:80 check<br>
-                    &nbsp;&nbsp;server web2 192.168.1.11:80 check
-                </div>
-            </div>
-            <div class="doc-block">
-                <div class="doc-header"><span>docker-compose.yml</span> <i class="fab fa-docker" style="color:var(--primary)"></i></div>
-                <div class="doc-body">
-                    <span class="doc-key">version:</span> <span class="doc-str">'3.8'</span><br>
-                    <span class="doc-key">services:</span><br>
-                    &nbsp;&nbsp;<span class="doc-val">uptime-kuma:</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="doc-key">image:</span> <span class="doc-str">louislam/uptime-kuma:latest</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="doc-key">container_name:</span> <span class="doc-str">uptime-kuma</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="doc-key">ports:</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="doc-str">"3001:3001"</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="doc-key">volumes:</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="doc-str">./kuma:/app/data</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="doc-key">restart:</span> <span class="doc-str">always</span>
-                </div>
+                <div class="doc-header"><span>debian-hardening.sh</span><i class="fas fa-terminal" style="color: var(--primary);"></i></div>
+                <div class="doc-body"><span class="doc-comment"># Server Hardening — Competition Standard</span>
+apt update && apt upgrade -y
+timedatectl set-timezone <span class="doc-str">Asia/Jakarta</span>
+apt install <span class="doc-val">bind9 nginx postfix dovecot</span> -y
+ufw allow <span class="doc-str">22,53,80,443,587,993</span>/tcp
+useradd -m -s /bin/bash ridho \
+    && usermod -aG sudo ridho
+<span class="doc-comment"># crontab: 0 2 * * * rsync -az /srv/ backup:/mnt/nas/</span></div>
             </div>
         </div>
     </section>
 
     <!-- =========================================
-         CERTIFICATES SECTION (Text Details)
+         CERTIFICATES GALLERY
          ========================================= -->
     <section id="certificates">
         <div class="section-header">
-            <h2 class="section-title">Certificates & <span>Validation</span></h2>
-            <p class="section-subtitle">Official recognitions and training validations that back up my technical skills. Every certificate represents hundreds of hours of hands-on practice.</p>
+            <h2 class="section-title">Certificate <span>Gallery</span></h2>
+            <p class="section-subtitle">The complete collection of official certificates — from provincial champion to national finalist.</p>
         </div>
         <div class="grid-container">
-            <div class="card">
-                <div class="card-icon">🏅</div>
-                <h3>Medallion for Excellence</h3>
-                <span class="subtitle">LKS Nasional 2025</span>
-                <p>Awarded by Pusat Prestasi Nasional, Kemendikdasmen. Recognized as a top competitor nationally in ITNSA, achieving international standard competency.</p>
+
+            <div class="card gold">
+                <div class="cert-image-container">
+                    <span class="cert-verified">✔ FINALIS</span>
+                    <img src="sertifikat-ojm-finalis.png" alt="Sertifikat Finalis OJM Mikrotik 2026" class="cert-image">
+                    <div class="cert-overlay">OJM/2026/11585 — Valens Riyadi</div>
+                </div>
+                <h3>Sertifikat Finalis OJM 2026</h3>
+                <span class="subtitle">Olimpiade Jaringan Mikrotik — Antar SMK Tingkat Nasional</span>
+                <p>Diberikan kepada Ridho Fitrawan (SMK Negeri 1 Liwa) atas partisipasinya sebagai <strong>FINALIS</strong>. Diselenggarakan oleh Citraweb Solusi Teknologi bersama Mikrotik — 02 Oktober 2026, Yogyakarta.</p>
                 <ul class="detail-list">
-                    <li>Date: 1 August 2025</li>
-                    <li>Location: DKI Jakarta & Jawa Barat</li>
-                    <li>Doc: 21238/PPN/DIKMEN/2025</li>
-                    <li>Signatory: Dr. Maria Veronica Irene Herdjiono</li>
+                    <li><strong>No. Sertifikat:</strong> OJM/2026/11585</li>
+                    <li><strong>No. Peserta:</strong> 26010030156</li>
+                    <li><strong>NPSN:</strong> 10803530 — <strong>NISN:</strong> 0083270010</li>
                 </ul>
             </div>
+
             <div class="card">
-                <div class="card-icon">🏆</div>
-                <h3>Juara 1 LKS ITNSA</h3>
-                <span class="subtitle">Provinsi Lampung 2025</span>
-                <p>First place winner in the provincial level competition, earning the right to represent Lampung nationally.</p>
+                <div class="cert-image-container">
+                    <img src="https://z-cdn-media.chatglm.cn/files/6a2215c8-f4aa-4036-ba61-848a3ab39e53.png?auth_key=1884548453-abfaad36e7544e68ad2dcfc276feff79-0-d21a7e43acd5b22f3de03b20113281fa" alt="Sertifikat Juara 1 LKS Provinsi Lampung" class="cert-image">
+                    <div class="cert-overlay">Official Document - Verified</div>
+                </div>
+                <h3>Sertifikat Juara 1 LKS Provinsi</h3>
+                <span class="subtitle">ITNSA — Provinsi Lampung 2025</span>
+                <p>Champion 1 (Juara I) IT Network System Administration — Bandar Lampung, 2-3 Juli 2025.</p>
                 <ul class="detail-list">
-                    <li>Date: 3 July 2025</li>
-                    <li>Location: Bandar Lampung</li>
-                    <li>Doc: 420/1744/V.01/DP.3/2025</li>
-                    <li>Signatory: Thomas Amirico, S.STP., M.H.</li>
+                    <li><strong>Doc Number:</strong> 420/1744/V.01/DP.3/2025</li>
+                    <li><strong>Issued by:</strong> Disdikbud Prov. Lampung</li>
                 </ul>
             </div>
+
             <div class="card">
-                <div class="card-icon">📜</div>
-                <h3>Linux & Server Administration</h3>
-                <span class="subtitle">Self-Taught & Project Based</span>
-                <p>Validated through successful deployment of Debian servers, web services, mail servers, and load balancers in production-like environments.</p>
+                <div class="cert-image-container">
+                    <img src="https://z-cdn-media.chatglm.cn/files/7ec7655d-f2b6-45e6-a286-7f4b1e1b78ef.png?auth_key=1884548453-77ea89f71bf0411da9759646a4577fcc-0-a22be08c0cb3f189119047a12c2b03c3" alt="Sertifikat MoE LKS Nasional" class="cert-image">
+                    <div class="cert-overlay">Official Document - National Level</div>
+                </div>
+                <h3>Sertifikat MoE LKS Nasional</h3>
+                <span class="subtitle">Medallion for Excellence — ITNSA 2025</span>
+                <p>Medallion for Excellence pada LKS Nasional 2025 di Jakarta & Jawa Barat, 27 Juli - 1 Agustus 2025.</p>
                 <ul class="detail-list">
-                    <li>Nginx & Apache Configuration</li>
-                    <li>DNS (BIND9) & Mail (Postfix/Dovecot)</li>
-                    <li>HAProxy & Keepalived Implementation</li>
+                    <li><strong>Doc Number:</strong> 21238/PPN/DIKMEN/2025</li>
+                    <li><strong>Issued by:</strong> Pusat Prestasi Nasional, Kemendikdasmen</li>
                 </ul>
             </div>
-            <div class="card">
-                <div class="card-icon">🔗</div>
-                <h3>Networking & Mikrotik</h3>
-                <span class="subtitle">Practical Implementation</span>
-                <p>Mastered Mikrotik RouterOS, enterprise routing, firewall rules, and secure VPN tunnels through continuous practice and competition prep.</p>
-                <ul class="detail-list">
-                    <li>Mikrotik RouterOS Configuration</li>
-                    <li>Firewall, NAT, & VLAN Implementation</li>
-                    <li>VPN Site-to-Site & Client Setup</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-icon">☁️</div>
-                <h3>Cloudflare & Zero Trust</h3>
-                <span class="subtitle">Modern Infrastructure</span>
-                <p>Implemented secure tunnels without exposing public ports. Mastered DNS management and reverse proxy configurations.</p>
-                <ul class="detail-list">
-                    <li>Cloudflare Tunnel setup</li>
-                    <li>Domain & DNS Record Management</li>
-                    <li>Self-Hosted Application Deployment</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-icon">📦</div>
-                <h3>Virtualization & Containers</h3>
-                <span class="subtitle">Proxmox & Docker</span>
-                <p>Hands-on experience creating VMs and containers. Managing resources, snapshots, and network bridges.</p>
-                <ul class="detail-list">
-                    <li>Proxmox VE Installation & Mgmt</li>
-                    <li>Docker & Portainer orchestration</li>
-                    <li>VMware ESXi hypervisor configuration</li>
-                </ul>
-            </div>
+
         </div>
     </section>
 
@@ -1081,249 +1085,240 @@
          ========================================= -->
     <section id="contact">
         <div class="contact-content">
-            <h2 class="section-title" style="justify-content: center;">Let's <span>Connect</span></h2>
-            <p class="text-muted" style="font-size: 1.2rem; margin-bottom: 2rem;">
-                I am open to opportunities in Network Engineering, Cloud Infrastructure, and System Administration. Whether you want to discuss technology, collaborate on a project, or offer an opportunity, my inbox is always open.
-            </p>
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title" style="justify-content: center;">Get In <span>Touch</span></h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Open to collaborations, networking projects, or just talking about infrastructure and cloud tech. Ping me anytime.</p>
+            </div>
             <div class="contact-links">
+                <!-- Ganti href dengan link asli kamu -->
+                <a href="mailto:ridhofitrawan@example.com" class="contact-link" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="#" class="contact-link" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" class="contact-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <!-- Mengubah Tautan Instagram -->
-                <a href="https://instagram.com/ridhof11_" target="_blank" class="contact-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <!-- Mengubah Tautan Email -->
-                <a href="mailto:ridhofitrawan2@gmail.com" class="contact-link" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="contact-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="contact-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="contact-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </section>
+
     <!-- =========================================
          FOOTER
          ========================================= -->
     <footer>
-        <p>© 2025 Ridho Fitrawan | From Competition to Cloud</p>
-        <p>Designed & Built with <span class="heart"><i class="fas fa-heart"></i></span> for the love of infrastructure.</p>
-        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.8rem;">System Status: All servers operational.</p>
+        <p>© 2026 Ridho Fitrawan — SMK Negeri 1 Liwa</p>
+        <p>1st Winner LKS ITNSA Lampung 2025 · National MoE 2025 · Top 5 OJM Sumatera 2026 · Finalis OJM Nasional 2026</p>
+        <p>Designed & built with <span class="heart">❤</span> and a lot of <span style="color: var(--primary);">coffee</span></p>
     </footer>
 
     <!-- =========================================
-         WIDGETS (Terminal & Status)
+         WIDGETS (Terminal + Live Status)
          ========================================= -->
     <div class="widgets-container">
         <div class="live-status">
-            <h4>Lab System Status <span style="color: var(--accent);">●</span></h4>
-            <div class="status-item">Proxmox Server <div class="status-dot"></div></div>
-            <div class="status-item">Cloudflare Tunnel <div class="status-dot"></div></div>
-            <div class="status-item">Website Hosting <div class="status-dot"></div></div>
-            <div class="status-item">Monitoring System <div class="status-dot"></div></div>
+            <h4><i class="fas fa-signal" style="color: var(--accent);"></i> SYSTEM STATUS <span class="status-dot"></span></h4>
+            <div class="status-item"><span>Location</span><span>Lampung, ID</span></div>
+            <div class="status-item"><span>Status</span><span style="color: var(--accent);">● Online</span></div>
+            <div class="status-item"><span>OJM 2026</span><span style="color: var(--warning);">FINALIS</span></div>
+            <div class="status-item"><span>Uptime</span><span>99.98%</span></div>
         </div>
+        <button class="terminal-btn" id="terminal-toggle" title="Open Terminal"><i class="fas fa-terminal"></i></button>
+    </div>
 
-        <button class="terminal-btn" onclick="toggleTerminal()"><i class="fas fa-terminal"></i></button>
-        
-        <div class="terminal-window" id="terminal-window">
-            <div class="terminal-header">
-                <span>ridho@cloud: ~</span>
-                <span style="cursor: pointer;" onclick="toggleTerminal()">✖</span>
-            </div>
-            <div class="terminal-body" id="terminal-body">
-                <div>Welcome to Ridho's Terminal. Type <span style="color: var(--primary)">'help'</span> to see commands.</div>
-                <div>&nbsp;</div>
-            </div>
-            <div class="terminal-input-line">
-                <span>ridho@cloud:~$</span>
-                <input type="text" id="terminal-input" autofocus>
-            </div>
+    <div class="terminal-window" id="terminal-window">
+        <div class="terminal-header">
+            <span><i class="fas fa-terminal"></i> ridho@cloud: ~/terminal</span>
+            <i class="fas fa-times" id="terminal-close"></i>
+        </div>
+        <div class="terminal-body" id="terminal-output-wrap">
+            <div class="terminal-output" id="terminal-output"></div>
+        </div>
+        <div class="terminal-input-line">
+            <span>ridho@cloud:~$</span>
+            <input type="text" id="terminal-input" autocomplete="off" placeholder="type 'help'...">
         </div>
     </div>
 
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
     <script>
-        // =========================================
-        // LOADING SCREEN
-        // =========================================
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 2000);
+        /* ---------- LOADER ---------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => document.getElementById('loader').classList.add('hidden'), 2200);
         });
 
-        // =========================================
-        // CUSTOM CURSOR
-        // =========================================
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorOutline.style.left = `${posX}px`;
-            cursorOutline.style.top = `${posY}px`;
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
-        document.querySelectorAll('a, button, .card, .terminal-btn').forEach(el => {
-            el.addEventListener('mouseenter', () => cursorOutline.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hover'));
-        });
-
-        // =========================================
-        // CANVAS BACKGROUND ANIMATION
-        // =========================================
+        /* ---------- CANVAS NETWORK BACKGROUND ---------- */
         const canvas = document.getElementById('network-canvas');
         const ctx = canvas.getContext('2d');
-        let nodes = [];
-        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initNodes(); }
-        function initNodes() {
-            nodes = [];
-            const nodeCount = Math.floor((canvas.width * canvas.height) / 12000);
-            for (let i = 0; i < nodeCount; i++) {
-                nodes.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5, radius: Math.random() * 2 + 1 });
-            }
-        }
-        function drawNetwork() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            nodes.forEach(node => {
-                node.x += node.vx; node.y += node.vy;
-                if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-                if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#00f2ff';
-                ctx.fill();
+        let particles = [];
+        function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        const P_COUNT = Math.min(80, Math.floor(innerWidth / 18));
+        for (let i = 0; i < P_COUNT; i++) {
+            particles.push({
+                x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.6,
+                r: Math.random() * 2 + 1
             });
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x;
-                    const dy = nodes[i].y - nodes[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 130) {
+        }
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = '#00f2ff'; ctx.fill();
+            });
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const d = Math.hypot(dx, dy);
+                    if (d < 120) {
                         ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.strokeStyle = `rgba(0, 242, 255, ${1 - dist / 130})`;
-                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = 'rgba(0,242,255,' + ((1 - d / 120) * 0.5) + ')';
                         ctx.stroke();
                     }
                 }
             }
-            requestAnimationFrame(drawNetwork);
+            requestAnimationFrame(animateCanvas);
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        drawNetwork();
+        animateCanvas();
 
-        // =========================================
-        // TERMINAL LOGIC
-        // =========================================
-        const terminalWindow = document.getElementById('terminal-window');
-        const terminalInput = document.getElementById('terminal-input');
-        const terminalBody = document.getElementById('terminal-body');
-        function toggleTerminal() {
-            if (terminalWindow.style.display === 'flex') { terminalWindow.style.display = 'none'; }
-            else { terminalWindow.style.display = 'flex'; terminalInput.focus(); }
-        }
-        terminalInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const command = terminalInput.value.trim().toLowerCase();
-                const newLine = document.createElement('div');
-                newLine.innerHTML = `<span style="color:var(--primary)">ridho@cloud:~$</span> ${command}`;
-                terminalBody.appendChild(newLine);
-                const response = document.createElement('div');
-                response.style.color = 'var(--text-muted)';
-                response.style.marginBottom = '10px';
-                switch(command) {
-                    case 'help':
-                        response.innerHTML = 'Available commands:<br> <span style="color:var(--primary)">whoami</span> - About me<br> <span style="color:var(--primary)">skills</span> - Technical skills<br> <span style="color:var(--primary)">achievement</span> - Competition results<br> <span style="color:var(--primary)">projects</span> - Project list<br> <span style="color:var(--primary)">devices</span> - Hardware specs<br> <span style="color:var(--primary)">ls</span> - List files<br> <span style="color:var(--primary)">ping</span> - Check connection<br> <span style="color:var(--primary)">docker ps</span> - Active containers<br> <span style="color:var(--primary)">sudo ridho</span> - Secret access<br> <span style="color:var(--primary)">clear</span> - Clear terminal';
-                        break;
-                    case 'whoami':
-                        response.innerHTML = 'Ridho Fitrawan<br>Network & System Administrator<br>Cloud Engineer Enthusiast<br>SMKN 1 Liwa';
-                        break;
-                    case 'skills':
-                        response.innerHTML = 'Networking (90%)<br>Linux Server (85%)<br>Virtualization (80%)<br>Docker & Monitoring (75%)<br>Cloud (70%)';
-                        break;
-                    case 'achievement':
-                        response.innerHTML = '🏆 Juara 1 LKS ITNSA Lampung 2025<br>🥇 MoE LKS ITNSA Nasional 2025';
-                        break;
-                    case 'projects':
-                        response.innerHTML = '1. Enterprise Network Infra<br>2. Private Cloud Infrastructure<br>3. Self-Hosted Home Lab<br>4. Enterprise Mail Server<br>5. Load Balancer & Reverse Proxy<br>6. Site-to-Site VPN Infrastructure';
-                        break;
-                    case 'devices':
-                        response.innerHTML = 'Laptop: Acer Aspire Lite 14 (i3, 8GB)<br>Phone: Infinix GT 30 Pro 5G';
-                        break;
-                    case 'ls':
-                        response.innerHTML = '<span style="color:var(--primary)">certificates/</span>  <span style="color:var(--primary)">projects/</span>  <span style="color:var(--accent)">ridho_cv.pdf</span>  <span style="color:var(--accent)">readme.md</span>';
-                        break;
-                    case 'ping':
-                        response.innerHTML = 'PING cloud.ridho.dev (10.0.0.10): 56 data bytes<br>64 bytes from 10.0.0.10: icmp_seq=0 ttl=64 time=0.234 ms<br>64 bytes from 10.0.0.10: icmp_seq=1 ttl=64 time=0.198 ms<br><br>--- cloud.ridho.dev ping statistics ---<br>2 packets transmitted, 2 packets received, 0.0% packet loss';
-                        break;
-                    case 'docker ps':
-                        response.innerHTML = 'CONTAINER ID   IMAGE                  STATUS         NAMES<br>a1b2c3d4e5f6   uptime-kuma:latest     Up 3 days      uptime-kuma<br>f6e5d4c3b2a1   jellyfin/jellyfin      Up 3 days      jellyfin<br>1a2b3c4d5e6f   portainer/portainer    Up 3 days      portainer';
-                        break;
-                    case 'sudo ridho':
-                        response.style.color = 'var(--accent)';
-                        response.innerHTML = 'Access Granted. <br>🚀 Future Cloud Engineer Unlocked!';
-                        break;
-                    case 'clear':
-                        terminalBody.innerHTML = '';
-                        return;
-                    default:
-                        response.style.color = '#ef4444';
-                        response.innerHTML = `Command not found: ${command}. Type 'help'.`;
-                }
-                terminalBody.appendChild(response);
-                terminalInput.value = '';
-                terminalBody.scrollTop = terminalBody.scrollHeight;
-            }
+        /* ---------- CUSTOM CURSOR ---------- */
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        let mx = -100, my = -100, ox = -100, oy = -100;
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+        });
+        (function cursorLoop() {
+            ox += (mx - ox) * 0.15; oy += (my - oy) * 0.15;
+            outline.style.transform = `translate(${ox - 20}px, ${oy - 20}px)` + (outline.classList.contains('hover') ? ' scale(1.5)' : '');
+            requestAnimationFrame(cursorLoop);
+        })();
+        document.querySelectorAll('a, button, .card, .badge, .ojm-card, .tech-item').forEach(el => {
+            el.addEventListener('mouseenter', () => outline.classList.add('hover'));
+            el.addEventListener('mouseleave', () => outline.classList.remove('hover'));
         });
 
-        // =========================================
-        // SCROLL ANIMATIONS & COUNTERS
-        // =========================================
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    if (entry.target.classList.contains('skill-card')) {
-                        const bar = entry.target.querySelector('.progress-bar');
-                        const width = bar.getAttribute('data-width');
-                        setTimeout(() => { bar.style.width = width + '%'; }, 300);
-                    }
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        document.querySelectorAll('.fade-in, .skill-card').forEach(el => { observer.observe(el); });
+        /* ---------- NAV SCROLL + MOBILE MENU ---------- */
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', scrollY > 50));
+        document.querySelector('.mobile-menu-btn').addEventListener('click', () => navbar.classList.toggle('menu-open'));
+        document.querySelectorAll('nav ul li a').forEach(a => a.addEventListener('click', () => navbar.classList.remove('menu-open')));
 
-        // Counter Animation
-        const counters = document.querySelectorAll('.stat-number');
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = +entry.target.getAttribute('data-target');
-                    const suffix = entry.target.getAttribute('data-suffix') || '';
-                    let count = 0;
-                    const speed = 2000 / target;
-                    const updateCount = () => {
-                        if (count < target) {
-                            count++;
-                            entry.target.innerText = count + suffix;
-                            setTimeout(updateCount, speed);
-                        } else {
-                            entry.target.innerText = target + suffix;
-                        }
-                    };
-                    updateCount();
-                    counterObserver.unobserve(entry.target);
-                }
+        /* ---------- COUNTER ANIMATION ---------- */
+        const counterObs = new IntersectionObserver(entries => {
+            entries.forEach(en => {
+                if (!en.isIntersecting) return;
+                const el = en.target;
+                const target = +el.dataset.target;
+                const suffix = el.dataset.suffix || '';
+                let cur = 0;
+                const step = Math.max(1, Math.floor(target / 60));
+                const t = setInterval(() => {
+                    cur += step;
+                    if (cur >= target) { cur = target; clearInterval(t); }
+                    el.textContent = cur + suffix;
+                }, 30);
+                counterObs.unobserve(el);
             });
         }, { threshold: 0.5 });
-        counters.forEach(c => counterObserver.observe(c));
+        document.querySelectorAll('.stat-number').forEach(c => counterObs.observe(c));
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) { nav.classList.add('scrolled'); }
-            else { nav.classList.remove('scrolled'); }
+        /* ---------- SKILL BARS ---------- */
+        const skillObs = new IntersectionObserver(entries => {
+            entries.forEach(en => {
+                if (en.isIntersecting) {
+                    en.target.style.width = en.target.dataset.width + '%';
+                    skillObs.unobserve(en.target);
+                }
+            });
+        }, { threshold: 0.4 });
+        document.querySelectorAll('.progress-bar').forEach(b => skillObs.observe(b));
+
+        /* ---------- SCROLL FADE-IN ---------- */
+        const fadeEls = document.querySelectorAll('.card, .philosophy-card, .skill-card, .project-card, .timeline-item, .device-card, .lks-card, .doc-block, .ojm-card');
+        fadeEls.forEach(el => el.classList.add('fade-in'));
+        const fadeObs = new IntersectionObserver(entries => {
+            entries.forEach(en => {
+                if (en.isIntersecting) { en.target.classList.add('visible'); fadeObs.unobserve(en.target); }
+            });
+        }, { threshold: 0.1 });
+        fadeEls.forEach(el => fadeObs.observe(el));
+
+        /* ---------- TERMINAL WIDGET ---------- */
+        const termWin = document.getElementById('terminal-window');
+        const termOut = document.getElementById('terminal-output');
+        const termInput = document.getElementById('terminal-input');
+        const termWrap = document.getElementById('terminal-output-wrap');
+
+        document.getElementById('terminal-toggle').addEventListener('click', () => {
+            termWin.classList.toggle('open');
+            if (termWin.classList.contains('open')) {
+                if (!termOut.dataset.init) {
+                    print('Welcome to ridho@cloud interactive terminal.', 'out-cmd');
+                    print("Type 'help' to see available commands.", 'out-cmd');
+                    termOut.dataset.init = '1';
+                }
+                termInput.focus();
+            }
+        });
+        document.getElementById('terminal-close').addEventListener('click', () => termWin.classList.remove('open'));
+
+        function print(text, cls = '') {
+            const div = document.createElement('div');
+            if (cls) div.className = cls;
+            div.textContent = text;
+            termOut.appendChild(div);
+            termWrap.scrollTop = termWrap.scrollHeight;
+        }
+
+        const commands = {
+            help: () => print('Available: help, whoami, about, skills, achievements, ojm, contact, clear, date, ls, sudo, neofetch'),
+            whoami: () => print('ridho — Network & System Administrator, Cloud Engineer Enthusiast'),
+            about: () => print('Student at SMKN 1 Liwa. Building infrastructure, breaking things, fixing them better.'),
+            skills: () => print('Mikrotik RouterOS · Debian · Proxmox · Docker · Nginx · BIND9 · WireGuard · Bash'),
+            achievements: () => {
+                print('🏆 1st Winner LKS ITNSA Provinsi Lampung 2025');
+                print('🥇 National MoE LKS ITNSA 2025');
+                print('🌐 Top 5 OJM Mikrotik Regional Sumatera 2026');
+                print('🏅 Finalis OJM Mikrotik Nasional 2026 — Yogyakarta');
+            },
+            ojm: () => {
+                print('=== OLIMPIADE JARINGAN MIKROTIK 2026 ===', 'out-cmd');
+                print('Tahap 1 Regional Sumatera : TOP 5');
+                print('Final Nasional (Yogyakarta): FINALIS — 02 Okt 2026');
+                print('Organizer: Citraweb Solusi Teknologi x Mikrotik');
+                print('Sertifikat: OJM/2026/11585');
+            },
+            contact: () => print('Email: ridhofitrawan@example.com — or use the contact section.'),
+            date: () => print(new Date().toString()),
+            ls: () => print('about.txt  achievements.log  ojm2026.cert  projects/  skills.json'),
+            sudo: () => print('ridho is not in the sudoers file. This incident will be reported... just kidding. 😎', 'out-err'),
+            neofetch: () => {
+                print('ridho@cloud', 'out-cmd');
+                print('OS: Debian 12 / Proxmox VE');
+                print('Uptime: since 2025');
+                print('Shell: bash 5.2');
+                print('Status: OJM 2026 FINALIST');
+            },
+            clear: () => { termOut.innerHTML = ''; }
+        };
+        termInput.addEventListener('keydown', e => {
+            if (e.key !== 'Enter') return;
+            const raw = termInput.value.trim();
+            if (!raw) return;
+            print('ridho@cloud:~$ ' + raw, 'out-cmd');
+            termInput.value = '';
+            const cmd = raw.toLowerCase().split(' ')[0];
+            if (commands[cmd]) commands[cmd]();
+            else print('bash: ' + cmd + ': command not found — try \'help\'', 'out-err');
         });
     </script>
 </body>
